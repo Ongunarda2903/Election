@@ -91,21 +91,3 @@ Based on the correlation I find, I will predict the possible outcome of the next
 
 ---
 
-### 🛠️ Example Code for Data Collection (Application X)
-```python
-import snscrape.modules.twitter as sntwitter
-import pandas as pd
-
-tweets = []
-query = "#Election2028 OR PartyA OR PartyB lang:en"
-
-for tweet in sntwitter.TwitterSearchScraper(query).get_items():
-    if len(tweets) >= 500:
-        break
-    tweets.append([tweet.id, tweet.date, tweet.user.username, tweet.content, tweet.likeCount, tweet.retweetCount])
-
-df = pd.DataFrame(tweets, columns=['Tweet ID', 'Date', 'User', 'Tweet', 'Likes', 'Retweets'])
-df.to_csv("tweets_data.csv", mode='a', header=False, index=False)
-
-print("Tweets have been collected and saved to CSV!")
-# Election
